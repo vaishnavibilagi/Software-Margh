@@ -1,0 +1,948 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SWM</title>
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
+  <!--Lightbox Pupup-->
+  <link rel="stylesheet" href="css/lightbox.css">
+      
+  <!--Bootstarp 5 cdn-->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+        
+  <!--Font Awesome 5 cdn-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+
+  <!--style css-->
+  <!--<link rel="stylesheet" href="styles.css">desktop version css-->
+  <!--<link rel="stylesheet" href="css/resposive-style.css">mobile css controlling-->
+
+<!--search box links related
+<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/css/bootstrap-select.min.css">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/js/bootstrap-select.min.js"></script>-->
+
+<!--bootstrap for search box selectpicker-->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css">
+
+
+  <!--css code-->
+<style>
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:weight@100;200;300;400;500;600;700;800&display=swap");
+
+.logo{
+    border-radius: 2px  16px 20px;
+    size: 50px;
+
+}
+.body{
+    height: 3000px;
+    overflow-x: hidden;
+}
+
+.img{
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    filter: brightness(0.6);
+}
+
+.i{
+  color: orange;
+  font-size: 25px;
+}
+
+.b{
+  color: white;
+  font-size: 30px;
+}
+
+.container{
+  color: white;
+}
+
+.navbar{
+  transition: all 0.5s;
+}
+
+.navbar-scrolled{
+  background-color: black;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+  
+}
+
+.nav-link{
+  color: orange;
+}
+
+.nav-link.active{
+  color: white;
+
+}
+
+.nav-link:hover{
+  color:#fff;
+
+}
+
+.dropdown-menu{
+  color: gray;
+}
+
+.logoo{
+  opacity: 0.6;
+}
+
+.logoo:hover{
+  opacity: 1.0;
+}
+
+.logoo::before{
+  content: " ";
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.1);
+  
+}
+.nav-item{
+  list-style-type: none;
+  display:inline-block;
+  font-size: 15px;
+  padding: 5px;
+}
+.nav ul{
+  float: left;
+}
+
+
+body{
+ background-color:#eee;
+ font-family: "Poppins", sans-serif;
+ font-weight: 300;
+}
+
+.height{
+ height: 100vh;
+}
+
+
+/*body {
+    background: #e8cbc0;
+    background: -webkit-linear-gradient(to right, #e8cbc0, #636fa4);
+    background: linear-gradient(to right, #e8cbc0, #636fa4);
+    min-height: 100vh;
+}
+.body{
+  background: rgb(8,5,58);
+background: linear-gradient(90deg, rgba(8,5,58,1) 0%, rgba(16,16,130,1) 76%, rgba(67,35,93,1) 100%);
+
+
+}*/
+.body{
+  background-color: #d3d3d3;
+background-image: linear-gradient(315deg, #d3d3d3 0%, #57606f 74%);
+
+
+}
+
+
+.search_select_box{
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 500px; /* Adjust the width as needed */
+  z-index: 1;
+  position: absolute;
+  
+}
+ .select-option{
+  position: relative;
+ }
+
+ .select-option input{
+  width: 100%;
+  background-color: #fff;
+  color: #000;
+  border-radius: 7px;
+  cursor: pointer;
+  font-size: 22px;
+  padding: 15px 20px ;
+  border: 0 !important;
+  outline: 0 !important;
+ }
+ .select-option::after{
+  content: "";
+  border-top: 12px solid #000;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  margin-top: -8px;
+ }
+ .content{
+  background-color: #fff;
+  position: absolute;
+  color: #000;
+  border-radius: 7px;
+  margin-top: 15px;
+  width: 100%;
+  z-index: 999;
+  display: none;
+ }
+.search input{
+  width: 100%;
+  font-size: 17px;
+  padding: 15px;
+  outline: 0;
+  border: 1px solid #b3b3b3;
+  border-radius: 5px;
+}
+
+.options{
+  margin-top: 10px;
+  max-height: 250px;
+  overflow-y: auto;
+  padding: 0;
+}
+
+.options li{
+  padding: 10px 15px;
+  border-radius: 5px;
+  font-size: 21px;
+  cursor: pointer;
+}
+.options li:hover{
+  background-color: #f2f2f2;
+}
+.search_select_box.active .content{
+  display: block;
+}
+
+.search_select_box.active .select-option::after{
+  transform: rotate(-180deg);
+}
+
+*/
+.nav-pills-custom .nav-link {
+    color: #aaa;
+    background: #fff;
+    position: relative;
+}
+
+.nav-pills-custom .nav-link.active {
+    color:black;
+    background: #fff;
+}
+
+
+/* Add indicator arrow for the active tab */
+@media (min-width: 1000px) {
+    .nav-pills-custom .nav-link::before {
+        content: '';
+        display: block;
+        border-top: 8px solid transparent;
+        border-left: 10px solid #fff;
+        border-bottom: 8px solid transparent;
+        position: absolute;
+        top: 50%;
+        right: -10px;
+        transform: translateY(-50%);
+        opacity: 0;
+    }
+}
+
+.nav-pills-custom .nav-link.active::before {
+    opacity: 1;
+}
+
+.with-chevron[aria-expanded='true'] i {
+  display: block;
+  transform: rotate(180deg) !important;
+}
+
+.container {
+  padding: 64px;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both
+}
+
+.column-66 {
+  float: left;
+  width: 66.66666%;
+  padding: 20px;
+}
+
+.column-33 {
+  float: left;
+  width: 33.33333%;
+  padding: 20px;
+}
+
+.large-font {
+  font-size: 48px;
+}
+
+.xlarge-font {
+  font-size: 64px
+}
+
+.button {
+  border: none;
+  color: white;
+  padding: 14px 28px;
+  font-size: 16px;
+  cursor: pointer;
+  background-color: #04AA6D;
+}
+
+img {
+  display: block;
+  height: auto;
+  max-width: 100%;
+}
+
+@media screen and (max-width: 1000px) {
+  .column-66,
+  .column-33 {
+    width: 100%;
+    text-align: center;
+  }
+  img {
+    margin: auto;
+  }
+}
+
+.textarea{
+border: #04AA6D;
+}
+
+</style>
+  
+ </head>
+<body class="body">
+  <img class="logoo"
+   src="{{ url_for('static',filename='imgg.jpg' ) }}" style="width:100%"/>
+
+   <!--search box with dropdown-->
+<div class="search_select_box col-md-8 center">
+  <div class="select-option">
+    <input type="text" placeholder="Select Category of your choice" id="soValue" readonly name=" ">
+  </div>
+  <div class="content">
+    <div class="search">
+      <input type="text" id="optionsearch" placeholder="Search here" name="">
+    </div>
+    <ul class="options">
+      <a style="color: #000;"  href="/prolang"><li value="">Programming Languages</li></a>
+      <a style="color: #000;" href="/webdev"><li>Web Development</li></a>
+      <a style="color: #000;" href="/frameworks"><li>Web Development Frameworks</li></a>
+      <a style="color: #000;" href="/mobileapp"><li>Mobile App Development</li></a>
+      <a style="color: #000;" href="/data_ana"><li>Data Science and Analytics</li></a>
+      <a style="color: #000;" href="/cyber"><li>Cyber Security</li></a>
+      <a style="color: #000;" href="/software"><li>Software Engineering</li></a>
+      <a style="color: #000;" href="/cloud"><li>Cloude computing </li></a>
+      <a style="color: #000;" href="/ai"><li>Artificial Intelligence</li></a>
+    </ul>
+  </div>
+</div>
+  
+   <!--navbar-->
+  <header id="full_nav">
+    <div class="header">
+      <div class="container">
+         <nav class="navbar navbar-expand-sm fixed-top">
+          <div class="container-fluid">
+            
+            <a class="navbar-brand" href="/home">
+              <img class="logo" src="{{ url_for('static',filename='logo.webp' ) }}" style="width:7%"/>
+              <span class="navbar-text"><i class="i">software</i><b class="b">Maargh</b></span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+           
+            <div class="collapse navbar-collapse" id="collapsibleNavbar">
+              <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                  <a class="nav-link active" href="/prolang"><i class="fa-solid fa-house"></i>Home</a>
+                </li>
+
+                <li class="nav-item">
+                  <a class="nav-link" href="/about"><i class="fa-solid fa-address-card"></i>About Us</a>
+                </li>  
+
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"><i class="fa-solid fa-registered"></i>Register</a>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="/guideregister">Guide Register </a></li>
+                    <li><a class="dropdown-item" href="/sturegister">Student Register</a></li>
+                  </ul>
+                </li>
+
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"><i class="fa-solid fa-right-to-bracket"></i>Login</a>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="/guidelogin">Guide Login </a></li>
+                    <li><a class="dropdown-item" href="/stulogin">Student Login </a></li>
+                  </ul>
+                </li>
+       
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">More Options</a>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="/profile">Guide profile</a></li>
+                    <li><a class="dropdown-item" href="/contact">Contact info</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </div>
+  </header> 
+
+<!--CONTENT
+        <video width="100%" height="100%" controls>
+          <source src="{{ url_for('static', filename='v1.mp4') }}" type="video/mp4">
+        </video>-->
+        
+        
+<!--CATEGORY DISPLAY OF SUBJECTS-->
+        
+        <section class="py-5 header">
+          <div class="container py-4">
+              <header class="text-center mb-5 pb-3 text-white">
+                  <h1 class="display-4">Categories you choose</h1>
+                  <p class="font-weight-bold mb-1">The field you choose have all the mentiond subjects in it.</p>
+              </header>
+      
+      
+              <div class="row">
+                  <div class="col-md-3">
+                      <!-- Tabs nav -->
+                      <div class="nav flex-column nav-pills nav-pills-custom" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                          <a class="nav-link mb-3 p-3 shadow active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">
+                              <i class="fa fa-user-circle-o mr-2"></i>
+                              <span class="font-weight-bold small text-uppercase"><i class="fa-solid fa-computer"></i>Programming Languages</span></a>
+      
+                          <a class="nav-link mb-3 p-3 shadow" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">
+                              <i class="fa fa-calendar-minus-o mr-2"></i>
+                              <span class="font-weight-bold small text-uppercase"><i class="fa-solid fa-code"></i>Web Development</span></a>
+      
+                          <a class="nav-link mb-3 p-3 shadow" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">
+                              <i class="fa fa-star mr-2"></i>
+                              <span class="font-weight-bold small text-uppercase">Web Development Frameworks</span></a>
+      
+                          <a class="nav-link mb-3 p-3 shadow" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">
+                              
+                              <span class="font-weight-bold small text-uppercase"><i class="fa-solid fa-mobile-screen-button"></i>Mobile App Development</span></a>
+
+                              <a class="nav-link mb-3 p-3 shadow" id="v-pills-hi-tab" data-toggle="pill" href="#v-pills-hi" role="tab" aria-controls="v-pills-hi" aria-selected="false">
+                                <span class="font-weight-bold small text-uppercase"><i class="fa-solid fa-database"></i>Data Science and Analytic</span></a>
+
+                                <a class="nav-link mb-3 p-3 shadow" id="v-pills-cyber-tab" data-toggle="pill" href="#v-pills-cyber" role="tab" aria-controls="v-pills-cyber" aria-selected="false">
+                                  <span class="font-weight-bold small text-uppercase"><i class="fa-solid fa-file-shield"></i>Cybersecurity</span></a>
+
+                                  <a class="nav-link mb-3 p-3 shadow" id="v-pills-soft-tab" data-toggle="pill" href="#v-pills-soft" role="tab" aria-controls="v-pills-soft" aria-selected="false">
+                                            <span class="font-weight-bold small text-uppercase"><i class="fa-solid fa-user"></i>Software Engineering</span></a>
+
+                                    <a class="nav-link mb-3 p-3 shadow" id="v-pills-cloud-tab" data-toggle="pill" href="#v-pills-cloud" role="tab" aria-controls="v-pills-cloud" aria-selected="false">
+                                    <span class="font-weight-bold small text-uppercase"><i class="fa-solid fa-cloud"></i>Cloud Computing</span></a>
+
+                                      <a class="nav-link mb-3 p-3 shadow" id="v-pills-ai-tab" data-toggle="pill" href="#v-pills-ai" role="tab" aria-controls="v-pills-ai" aria-selected="false">
+                                        <span class="font-weight-bold small text-uppercase"><i class="fa-solid fa-robot"></i>Artificial Intelligence </span></a>
+                        </div>
+                  </div>
+      
+                  <form action="" method="post" class=" border p-3 bg-lighht shadow col-md-9 ">
+                  <div class="col-md-9">
+                      <!-- Tabs content -->
+                      <div class="tab-content" id="v-pills-tabContent">
+                          <div class="tab-pane fade shadow rounded bg-white show active p-5" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+                              <h4 class="font-weight-bold text-dark mb-4"><i class="fa-solid fa-computer"></i>Programming Languages</h4>
+                              <ul class="font-italic text-dark mb-2">
+                                <li>Javascript</li>
+                                <li>Java</li>
+                                <li>Python</li>
+                                <li>c#</li>
+                                <li>c/c#</li>
+                                <li>ruby</li>
+                                <li>Kotlin</li>
+                                <li>Php</li>
+                                <li>swift</li>
+                                <li>Typescript</li>
+                              </ul>
+                              <p class="font-italic text-muted mb-2">As far as web and software development goes, Python, followed by Java, JavaScript, and C++, 
+                                are among the most popular programming languages in today’s market.</p>
+                                <p  class="font-italic text-muted mb-2">Whether you’re looking to improve your coding skills or start a career in technology, learning a coding language can bring many benefits. 
+                                  It helps hone your technical and problem-solving skills and get a high-paying job.</p>
+                          </div>
+                          
+                          <div class="tab-pane fade shadow rounded bg-white p-5" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+                              <h4 class="font-weight-bold text-dark mb-4"><i class="fa-solid fa-code"></i>Web Development</h4>
+                              <ul class="font-italic text-dark mb-2">
+                                <li>HTML</li>
+                                <li>CSS</li>
+                                <li>Javascript for Web Development</li>
+                                <li>Front-End  Web Development</li>
+                                <li>Back-End  Web Development</li>
+                                <li>Full-Stack Web Development</li>
+                              </ul>
+                              <p class="font-italic text-muted mb-2">Web development, also known as website development, refers to the tasks associated with creating, building, and maintaining websites and web applications that run online on a browser. 
+                                It may, however, also include web design, web programming, and database management.
+
+                                Web development is closely related to the job of designing the features and functionality of apps (web design).
+                                 The term development is usually reserved for the actual construction of these things (that is to say, the programming of sites).
+                                
+                                <p class="font-italic text-muted mb-2">The basic tools involved in web development are programming languages called HTML (Hypertext Markup Language), CSS (Cascading Style Sheets), and JavaScript. 
+                                  There are, however, a number of other programs used to “manage” or facilitate the construction of sites that would otherwise have to be done “from scratch” by writing code. A number of content management systems (CMS) fall into this category, 
+                                  including WordPress, Joomla!, Drupal, TYPO3, and Adobe Experience Manager, among others.</p>
+                          </div>
+                          
+                          <div class="tab-pane fade shadow rounded bg-white p-5" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
+                              <h4 class="font-weight-bold text-dark"><i class="fa fa-star mr-2"></i>Web Development Frameworks</h4>
+                              <ul class="font-italic text-dark mb-2">
+                                <li>React</li>
+                                <li>Angular</li>
+                                <li>vue.js</li>
+                                <li>Flask</li>
+                                <li>Django</li>
+                                <li>Laravel</li>
+                                <li>ruby on ralls</li>
+                                <li>ASP.NET</li>
+                                <li>Express.js</li>
+                              </ul>
+                              <p class="font-italic text-muted mb-2">Web Application Framework or simply “web framework” is a software 
+                                framework that is designed 
+                                to support the development of web applications including web services, web resources,
+                                 and web APIs. Frameworks are, in short, libraries that help you develop your application
+                                  faster and smarter!</p>
+                                  <p class="font-italic text-muted mb-2">
+                                Nowadays, the number of Web Frameworks has increased greatly. 
+                                To help you pick up the most suitable one for your Web Application,
+                                 we have compiled a list of 10 best frameworks available online, in your preferred 
+                                 language.
+                            </p>
+                              
+                          </div>
+                          
+                          <div class="tab-pane fade shadow rounded bg-white p-5" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
+                              <h4 class="font-weight-bold text-dark mb-4"><i class="fa-solid fa-mobile-screen-button"></i>Mobile App Development</h4>
+                             <ul  class="font-italic text-dark mb-2">
+                              <li>Android App Development</li>
+                              <li>iOS App Development (Swift)</li>
+                              <li>Cross-Platform Mobile Development</li>
+                            </ul>
+                            <p class="font-italic text-muted mb-2">Mobile application development is the process of making software for smartphones, tablets and 
+                              digital assistants, most commonly
+                               for the Android and iOS operating systems. The software can be preinstalled on the device,
+                                downloaded from a mobile app store or accessed through a mobile web browser. The programming and markup 
+                                languages used for this kind of software development include Java, Swift, C# and HTML5.</p>
+
+                             <p class="font-italic text-muted mb-2"> Mobile app development is rapidly growing. From retail, telecommunications and e-commerce to insurance, healthcare and government,
+                               organizations across industries must meet user expectations for real-time, convenient ways to conduct transactions and access information. 
+                               Today, mobile devices—and the mobile applications that unlock their value—are the most popular way for people and businesses to connect to the internet.
+                                To stay relevant, responsive and successful, organizations need to develop the mobile applications that their customers, partners and employees demand.</p> 
+                          </div>
+
+                          <div class="tab-pane fade shadow rounded bg-white p-5" id="v-pills-hi" role="tabpanel" aria-labelledby="v-pills-hi-tab">
+                            <h4 class="font-weight-bold text-dark mb-4"><i class="fa-solid fa-database"></i>Data Science and Analytic</h4>
+                           <ul  class="font-italic text-dark mb-2">
+                            <li>Data Mining</li>
+                            <li>Machine Learning</li>
+                            <li>Data Visualization</li>
+                            <li> Big Data Analytics</li>
+                            <li> Natural Language Processing</li>
+                            <li>Data structure</li>
+                            <li>Design and Analysis of Algorithms</li>
+                          </ul>
+                          <p class="font-italic text-muted mb-2">Data science is a multidisciplinary field focused on finding actionable insights from 
+                            large sets of raw and structured data. The field primarily fixates on unearthing answers 
+                            to the things we don’t know we don’t know. Data science experts use several different techniques to
+                             obtain answers, incorporating computer science, predictive analytics, statistics, and machine learning to parse through 
+                             massive datasets in an effort to establish solutions to problems that haven’t been thought of yet.</p>
+
+                           <p class="font-italic text-muted mb-2">Data scientists’ main goal is to ask questions 
+                            and locate potential avenues of study,with less concern for specific answers and 
+                            more emphasis placed on finding the right question to ask. Experts accomplish this by
+                             predicting potential trends, exploring disparate and disconnected data sources,
+                              and finding better ways to analyze information.</p>
+                              
+                              <p class="font-italic text-muted mb-2">Data analytics focuses on processing and performing statistical analysis 
+                                of existing datasets. Analysts concentrate on creating methods to capture,
+                                 process, and organize data to uncover actionable insights for current problems,
+                                  and establishing the best way to present this data. More simply, the field of data and 
+                                  analytics is directed toward solving problems for questions we know we don’t know the answers to. More importantly, 
+                                  it’s based on producing results that can lead to immediate improvements.</p>
+                        </div>
+
+                        <div class="tab-pane fade shadow rounded bg-white p-5" id="v-pills-cyber" role="tabpanel" aria-labelledby="v-pills-cyber-tab">
+                          <h4 class="font-weight-bold text-dark mb-4"><i class="fa-solid fa-file-shield"></i>Cybersecurity</h4>
+                         <ul  class="font-italic text-dark mb-2">
+                          <li> Cybersecurity</li>
+                          <li>Network Security</li>
+                          <li>Ethical Hacking</li>
+                          <li> Cryptography</li>
+                          <li>Secure Software Development</li>
+                          </ul>
+                          <p class="font-italic text-muted mb-2" >Cybersecurity is the practice of protecting systems, networks,
+                             and programs from digital attacks. These cyberattacks are usually 
+                             aimed at accessing, changing, or destroying sensitive information;
+                              extorting money from users via ransomware; or interrupting normal business 
+                              processes.</p>
+
+                            <p  class="font-italic text-muted mb-2">Implementing effective cybersecurity measures is particularly challenging 
+                              today because there are more devices than people, and attackers are becoming 
+                              more innovative.
+                            </p>
+                      </div>
+
+                      <div class="tab-pane fade shadow rounded bg-white p-5" id="v-pills-soft" role="tabpanel" aria-labelledby="v-pills-soft-tab">
+                        <h4 class="font-weight-bold text-dark mb-4"><i class="fa-solid fa-user"></i>Software Engineering</h4>
+                       <ul  class="font-italic text-dark mb-2">
+                        <li> Software Engineering</li>
+                        <li>Agile Development Methodologies</li>
+                        <li>Object-Oriented Programming</li>
+                        <li> Software Testing and Quality Assurance</li>
+                        <li>Software Project Management</li>
+                      </ul>
+                      <p class="font-italic text-muted mb-2">Software is a program or set of programs containing instructions
+                         that provide desired functionality. And Engineering is the process of designing and building something 
+                        that serves a particular purpose and finds a cost-effective solution to problems. </p>
+                      <p class="font-italic text-muted mb-2">Software engineering is the process of designing, developing, 
+                        testing, and maintaining software. It is a systematic and disciplined approach to software development that aims to 
+                        create high-quality, reliable, and maintainable software. Software engineering includes a variety of techniques, tools,
+                         and methodologies, including requirements analysis, design, testing, and maintenance.</p>
+                    </div>
+
+                    <div class="tab-pane fade shadow rounded bg-white p-5" id="v-pills-cloud" role="tabpanel" aria-labelledby="v-pills-cloud-tab">
+                      <h4 class="font-weight-bold text-dark mb-4"><i class="fa-solid fa-cloud"></i>Cloud Computing</h4>
+                     <ul  class="font-italic text-dark mb-2">
+                      <li>AWS Certified Solutions Architect</li>
+                      <li>Google Cloud Platform Fundamentals</li>
+                      <li> Microsoft Azure Fundamentals</li>
+                      <li>Cloud Computing Specialization </li>
+                      <li>Cloud Architect</li>
+                      <li>Certified Cloud Security Professional</li>
+                      <li>Cloud Computing for Business</li>
+                    </ul>
+                    <p class="font-italic text-muted mb-2">Cloud Computing is defined as storing and accessing of data and
+                       computing services over the internet. It doesn’t store any data on your personal computer. 
+                       It is the on-demand availability of computer services like servers, data storage, networking, databases, etc.
+                        The main purpose of cloud computing is to give access to data centers to many users.
+                       Users can also access data from a remote server.</p>
+                    <p class="font-italic text-muted mb-2"><b>Examples of Cloud Computing Services:</b> AWS, Azure, Google Cloud.</p>
+                  </div>
+
+
+                  <div class="tab-pane fade shadow rounded bg-white p-5" id="v-pills-ai" role="tabpanel" aria-labelledby="v-pills-ai-tab">
+                    <h4 class="font-weight-bold text-dark mb-4"><i class="fa-solid fa-robot"></i>Artificial Intelligence</h4>
+                  
+                  <p class="font-italic text-muted mb-2">In the digital era, the explosion of technology has been matched
+                     by an equally seismic shift in the ways we think and talk about it. New digital tools give rise to new terms and phrases, 
+                     as well as new 
+                    conceptual frameworks for understanding how these tools affect and interact with society. </p>
+                  <p class="font-italic text-muted mb-2">As we contend with novel and heightened forms of harm, words like 
+                    disinformation and doxing have entered the mainstream. And concepts like digital rights and data governance 
+                    have come into existence
+                     amidst the push to align the technology of today with our vision for a better future.</p>
+                     <p class="font-italic text-muted mb-2">The voices of women, girls and other marginalized groups,
+                       historically sidelined or altogether absent in tech spaces, are urgently needed in decision-making processes. 
+                      Get ready to join the conversation—or start your own—by familiarizing yourself with these key terms.  </p>
+
+                      <ul  class="font-italic text-dark mb-2">
+                        <h5>What exactally AI contains?</h5>
+                        <li>Algorithm</li>
+                        <li>Algorithmic bias</li>
+                        <li>AI audit  </li>
+                        <li>Automation  </li>
+                        <li>Content moderation</li>
+                        <li>Data governance </li>
+                        <li>Digitalization etc...</li>
+                      </ul>
+                </div>
+                      </div>
+                     <!-- <img class="" src="{{ url_for('static',filename='pl.jpg' ) }}" style="width:100%"/>-->
+                  </div>
+                </form>
+              </div>
+          </div>
+</section>
+
+
+<!--OBJECTIVES-->
+
+<!--<center>
+    <div class="p-3 bg-lighht shadow col-md-10">
+       Collapse Panel 1
+      <a data-toggle="collapse" href="#collapseExample1" role="button" aria-expanded="true" aria-controls="collapseExample1" class="btn btn-dark btn-block py-2 shadow-sm with-chevron">
+        <p class="d-flex align-items-center justify-content-between mb-0 px-3 py-2 text-white"><strong class="text-uppercase">OBJECTIVES</strong><i class="fa fa-angle-down"></i></p>
+      </a>
+      <div id="collapseExample1" class="collapse shadow-sm show">
+        <div class="card">
+          <div class="card-body">
+            <p class="font-italic mb-0 text-muted">
+              
+                <li>Software Career guidance can help individuals explore their interests, abilities, 
+                  and values to identify career options that are good fit for them.</li>
+
+                <li>This can help individuals develop a plan for their career development.
+                    including education, training and work experience.</li>  
+              
+              <li> Our guidance can help individuals increase their career satisfaction by helping 
+                them find a career that is a good fit for them and that allows them to use their skills 
+                and abilities to make a difference in the world.</li>  
+              
+              <li>  We provide well experienced and skillful guiders who will make the 
+                  user understand about the concept.</li>  
+                </ul>
+              </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </center>
+
+  <div style="text-align:center">
+    <h2>Responsive Zig Zag Layout Example</h2>
+    <p>Resize the browser window to see the effect.</p>
+  </div>-->
+  
+  <!-- The App Section -->
+  <div class="container">
+    <div class="row">
+      <div class="column-66">
+        <h1 class="xlarge-font"><b>Objectives</b></h1>
+        <h1 class="large-font" style="color:orange;"><b>Why Us?</b></h1>
+        <p><span style="font-size:36px">Unlock your career potential.</span> 
+          <ul>
+            <li>Software Career guidance can help individuals explore their interests, abilities, 
+              and values to identify career options that are good fit for them.</li>
+
+            <li>This can help individuals develop a plan for their career development.
+                including education, training and work experience.</li>  
+          
+          <li> Our guidance can help individuals increase their career satisfaction by helping 
+            them find a career that is a good fit for them and that allows them to use their skills 
+            and abilities to make a difference in the world.</li>  
+          
+          <li>  We provide well experienced and skillful guiders who will make the 
+              user understand about the concept.</li>  
+          </ul>
+        <!--<button class="button"></button>-->
+      </div>
+      <div class="column-33">
+        <img class="logo" src="{{ url_for('static',filename='home1.png' ) }}" style="width:100%"/> 
+            
+      </div>
+    </div>
+  </div>
+  
+  <!-- Clarity Section -->
+  <div class="container" style="background-color:rgba(255,255,255, 0.9)">
+    <div class="row">
+      <div class="column-33">
+        <img class="logo" src="{{ url_for('static',filename='home3.png' ) }}" style="width:100%"/> 
+      </div>
+      <div class="column-66">
+        <h1 class="xlarge-font" style="color:orange;"><b>What we provide?</b></h1>
+        <h1 class="large-font" style="color:gray;"><b>let's see</b></h1>
+        <span class="medium-font" style="color:gray;">Platform for students as well as guide.</span>
+        <p>
+          <div class="row">
+            <div class="col-sm-6" style="color: #000;">
+              <h3>Student Use:</h3>
+              <ul>
+                <li>Register your account for login purpose.</li>
+                <li>go-to Guide profile option from Navigation bar to directly contact with
+                   them or start to chat with guide.</li>
+                <li>You are provided with the best guidance we have.</li>
+              </ul>
+            </div>
+            <div class="col-sm-6" style="color: #000;">
+              <h3>Guide Use:</h3>
+              <p>
+                <ul>
+                  <li>Register your account for login purpose.</li>
+                  <li>After login you will be forwarded to main documents submission.</li>
+                  <li>Submit the documents required and read every requirement carefully.</li>
+                </ul>
+              </p>
+            </div>
+           </div>
+          </p>
+        </div>
+    </div>
+  </div>
+  
+  <!-- The App Section -->
+  <div class="container">
+    <div class="row">
+      <div class="column-66">
+        <h1 class="xlarge-font"><b>Connect to us</b></h1>
+        <h1 class="large-font" style="color:orange;"><b>Feedback</b></h1>
+
+        <form action="/action_page.php" class="was-validated">
+          <div class="input-group col-lg-6 mb-4">
+            <input type="text" class="form-control" id="uname" placeholder="Enter username" name="uname" required>
+            <div class="valid-feedback">Valid.</div>
+            <div class="invalid-feedback">Please fill out this field.</div>
+          </div>
+
+          <div class="input-group col-lg-6 mb-4">
+            <input type="text" class="form-control" id="emailid" placeholder="Enter email-id" name="emailid" required>
+            <div class="valid-feedback">Valid.</div>
+            <div class="invalid-feedback">Please fill out this field.</div>
+          </div>
+          <div class="input-group col-lg-6 mb-4">
+          <textarea class="textarea"  id="subject" name="subject" placeholder="Your Feedback" style="width: 100%;"></textarea></div>
+          <br>
+       <center><button class="btn btn-warning" type="submit" style="width: auto;">Feedback</button> </center>          
+        </form>
+      </div>
+      <div class="column-33">
+        <img class="logo" src="{{ url_for('static',filename='home2.png' ) }}" style="width:100%"/> 
+ 
+      </div>
+    </div>
+  </div>
+  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+  <div class="container mt-3 shadow col-md">
+    
+    <div class="mt-5 p-5 bg-dark text-white rounded">
+      <h1><i class="i">software</i><b class="b">Maargh</b></h1> 
+      <h5 class="font-italic mb-0 text-muted">Unlock your career potential</h5> 
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <!--JS CODE-->
+
+        <!--Transperent navbar static-->
+        <script>
+          const navE1=document.querySelector('.navbar');
+          window.addEventListener('scroll',()=>{
+            if(window.scrollY >= 56){
+              navE1.classList.add('navbar-scrolled');
+       
+            }else if (window.screenY < 56){
+              navE1.classList.remove('navbar-scrolled')
+            }
+          })
+ 
+        </script>
+
+        <!--search box-->
+        <script>
+         const selectBox = document.querySelector('.search_select_box');
+         const selectOption = document.querySelector('.select-option');
+         const soValue = document.querySelector('#soValue');
+         const optionSearch = document.querySelector('#optionsearch');
+         const Options= document.querySelector('.options');
+         const optionsList = document.querySelectorAll('.options li');
+         
+         selectOption.addEventListener('click',function(){
+          selectBox.classList.toggle('active');
+         });
+
+         optionsList.forEach(function(optionsListSingle){
+          optionsListSingle.addEventListener('click',function(){
+            text = this.textContent;
+            soValue.value = text;
+            selectBox.classList.remove('active');
+          });
+         });
+
+         optionSearch.addEventListener('keyup',function(){
+          var filter, li, i, textValue;
+          filter = optionSearch.value.toUpperCase();
+          li = Options.getElementsByTagName('li');
+          for(i=0;i<li.length;i++){
+            liCount=li[i];
+            textValue=liCount.textContent || liCount.innerText;
+            if(textValue.toUpperCase().indexOf(filter) > -1){
+              li[i].style.display= '';
+              }else{
+                li[i].style.display= 'none';
+              }
+          }
+         });
+        </script>
+
+
+
+        <!--jQuery cdn-->
+        <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+        <!--Lightbox pupup-->
+        <script src="js/lightbox.js"></script>
+
+        <!--bootstrap 5 cdn-->
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"></script>
+
+        <!--custom JS-->
+        <script src="js/main.js"></script>
+
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js" ></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"></script>
+   
+
+      </body>
+</html>

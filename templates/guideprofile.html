@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Guide subscribe profile</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  
+
+</head>
+<style>
+  *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+  } 
+  :root{
+    --clr: #0ab3ff;
+  }
+  body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #1c2630;
+  }
+  .logo {
+            border-radius: 2px 16px 20px;
+            size: 50px;
+
+        }
+
+        .body {
+            height: 3000px;
+            overflow-x: hidden;
+            background-color: rgba(76, 175, 80, 0.1);
+        }
+
+        .img {
+            width: 100vw;
+            height: 100vh;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            filter: brightness(0.6);
+        }
+
+        .i {
+            color: gray;
+        }
+
+        .b {
+            color: white;
+        }
+
+        .container {
+            color: white;
+        }
+
+        .navbar {
+            transition: all 0.5s;
+        }
+
+        .navbar-scrolled {
+            background-color: black;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+
+        }
+
+        .nav-link {
+            color: white;
+        }
+
+        .nav-link.active {
+            color: white;
+
+        }
+
+        .nav-link:hover {
+            color: gray;
+
+        }
+
+        .dropdown-menu {
+            color: gray;
+        }
+
+/*snippet*/
+
+  .vertical-nav {
+  min-width: 19rem;
+  width: 19rem;
+  height: 100%;
+  position: fixed;
+  top: 5;
+  left: auto;
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
+  transition: all 0.4s;
+  
+}
+
+.page-content {
+  width: calc(100% - 17rem);
+  margin-left: 17rem;
+  transition: all 0.4s;
+}
+
+/* for toggle behavior */
+
+.sidebar.active {
+  margin-left: -17rem;
+}
+
+.content.active {
+  width: 100%;
+  margin: 0;
+}
+
+@media (max-width: 1000px) {
+  .sidebar {
+    margin-left: -17rem;
+  }
+  .sidebar.active {
+    margin-left: 0;
+  }
+  .content {
+    width: 100%;
+    margin: 0;
+  }
+  .content.active {
+    margin-left: 17rem;
+    width: calc(100% - 17rem);
+  }
+}     
+
+body {
+  
+  background-color: #d3d3d3;
+background-image: linear-gradient(315deg, #d3d3d3 0%, #57606f 74%);
+  overflow-x: hidden;
+}
+
+.separator {
+  margin: 3rem 0;
+  border-bottom: 1px dashed #fff;
+}
+
+.text-uppercase {
+  letter-spacing: 0.1em;
+}
+
+.text-gray {
+  color: #aaa;
+}
+
+
+</style>
+<body>
+        <!--navbar-->
+<header id="full_nav">
+    <div class="header">
+        <div class="container">
+            <nav class="navbar navbar-expand-sm fixed-top">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="#">
+                        <img class="logo" src="{{ url_for('static',filename='logo.webp' ) }}" style="width:7%" />
+                        <span class="navbar-text"><i class="i">software</i><b class="b">Maargh</b></span>
+                    </a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapsibleNavbar">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a class="nav-link" href="/home"><i class="fa-solid fa-house"></i>Home</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="/about"><i class="fa-solid fa-address-card"></i>About</a>
+                            </li>
+
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                                    <i class="fa-solid fa-registered"></i>Register</a>
+                                <ul class="dropdown-menu">
+                                  <li><a class="dropdown-item" href="/profileregister">Register Guide profile</a></li>
+                                  <li><a class="dropdown-item" href="/reg">Student Register</a></li>
+                                </ul>
+                              </li>
+                              
+                            
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" role="button"
+                                    data-bs-toggle="dropdown">More Options</a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="/guidelogin">Login</a></li>
+                                    <li><a class="dropdown-item" href="#">Guide profile</a></li>
+                                    <li><a class="dropdown-item" href="#">contact info</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+
+<!--CONTENT-->
+<!-- Vertical navbar -->
+<form action="" method="post" class="mt-5 border p-5 bg-lighht shadow">
+<div class="vertical-nav bg-dark" id="sidebar">
+    <div class="py-4 px-3 mb-4 bg-dark">
+      <div class="media d-flex align-items-center">
+        <img src="https://bootstrapious.com/i/snippets/sn-v-nav/avatar.png" alt="..." width="65" class="mr-3 rounded-circle img-thumbnail shadow-sm">
+        <div class="media-body">
+          <h4 class="m-0 text-warning">Name</h4>
+          <p class="font-weight-light text-muted mb-0">Occupasion</p>
+        </div>
+      </div>
+    </div>
+  
+    <p class="text-gray font-weight-bold text-uppercase px-3 small pb-2 mb-0">Information</p>
+     <ul class="nav flex-column bg-dark mb-0">
+      <li class="nav-item">
+        <a href="#" class="nav-link text-white font-italic bg-dark">
+                  <i class="fa fa-th-large mr-3 text-primary fa-fw"></i>
+                  Experience
+              </a>
+      </li>
+      <li class="nav-item">
+        <a href="#" class="nav-link text-white font-italic bg-dark">
+                  <i class="fa fa-address-card mr-3 text-primary fa-fw"></i>
+                  About
+              </a>
+      </li>
+      <li class="nav-item">
+        <a href="#" class="nav-link text-white font-italic bg-dark">
+                  <i class="fa fa-cubes mr-3 text-primary fa-fw"></i>
+                  Services
+              </a>
+      </li>
+      <li class="nav-item">
+        <a href="#" class="nav-link text-white font-italic bg-dark">
+                  <i class="fa fa-picture-o mr-3 text-primary fa-fw"></i>
+                  Gallery
+              </a>
+      </li>
+    </ul>
+  
+    
+  </div>
+  <!-- End vertical navbar -->
+  
+  
+  <!-- Page content holder -->
+  <div class="page-content p-5" id="content">
+    <!-- Toggle button -->
+  
+    <!-- Demo content -->
+    <h2 class="display-4 text-white">My profile</h2>
+    <p class="lead text-white mb-0">Note:only you can see this page.</p>
+    <div class="separator"></div>
+    <div class="row text-white">
+      <div class="col-lg-7">
+        <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
+          dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
+          dolor.
+        </p>
+        <div class="bg-white p-5 rounded my-5 shadow-sm">
+          <p class="lead font-italic mb-0 text-muted">"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+            irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
+        </div>
+        <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
+          dolor.
+        </p>
+        <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
+          dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
+          dolor.
+        </p>
+      </div>
+      <div class="col-lg-5">
+        <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
+          dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
+          dolor.
+        </p>
+        <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
+          dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
+          dolor.
+        </p>
+      </div>
+    </div>
+ 
+
+
+
+
+
+<!--<div class="row py-4">
+  <div class="col-lg-6 mx-auto">-->
+
+      
+<!--Validation agree-->
+<center>
+
+</center> 
+<br>
+
+  </div>
+</form> 
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--JS CONTENT-->
+ <!--Transperent navbar static-->
+ <script>
+    const navE1=document.querySelector('.navbar');
+    window.addEventListener('scroll',()=>{
+      if(window.scrollY >= 56){
+        navE1.classList.add('navbar-scrolled');
+ 
+      }else if (window.screenY < 56){
+        navE1.classList.remove('navbar-scrolled')
+      }
+    })
+
+  </script>
+
+
+
+
+      </div>
+      </div>
+      </header>
+      </body>
+      </html>  

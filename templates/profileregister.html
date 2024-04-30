@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Guide Registration</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+  <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+  <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<style>
+  *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+  } 
+  :root{
+    --clr: #0ab3ff;
+  }
+  body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #1c2630;
+  }
+  .logo {
+            border-radius: 2px 16px 20px;
+            size: 50px;
+
+        }
+
+        .body {
+            height: 3000px;
+            overflow-x: hidden;
+            background-color: rgba(76, 175, 80, 0.1);
+        }
+
+        .img {
+            width: 100vw;
+            height: 100vh;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            filter: brightness(0.6);
+        }
+
+        .i {
+            color: gray;
+        }
+
+        .b {
+            color: white;
+        }
+
+        .container {
+            color: white;
+        }
+
+        .navbar {
+            transition: all 0.5s;
+        }
+
+        .navbar-scrolled {
+            background-color: black;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+
+        }
+
+        .nav-link {
+            color: white;
+        }
+
+        .nav-link.active {
+            color: white;
+
+        }
+
+        .nav-link:hover {
+            color: gray;
+
+        }
+
+        .dropdown-menu {
+            color: gray;
+        }
+
+        /*snippet*/
+        
+
+  body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #1c2630;
+  }
+  form{
+    background: #29313c;
+    padding: 60px 80px 60px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+  }
+  form h2{
+    color: #fff;
+    font-weight: 500;
+    text-transform: uppercase;
+    font-size: 1.25em;
+    letter-spacing: 0.1em;
+    margin-bottom: 50px;
+  }
+  .inputbox{
+    position: relative;
+    width: 300px;
+    margin-bottom: 40px;
+  }
+  .inputbox input{
+    position: relative;
+    width: 100%;
+    padding: 10px 0;
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid #999;
+    outline: none;
+    color: #fff;
+    font-size: 1em;
+    letter-spacing: 0.15em;
+  }
+  .inputbox label{
+    position: absolute;
+    left: 0;
+    padding: 10px 0;
+    pointer-events: none;
+    color: #999;
+    text-transform: none;
+  }
+  .inputbox label span
+  {
+    position: relative;
+    display: inline-flex;
+    letter-spacing: 0.05em;
+    transition: 0.2s ease-in-out;
+  }
+  .inputbox input:focus ~ label span,
+  .inputbox input:valid ~ label span
+  {
+   color: var(--clr);
+   letter-spacing: 0.15em;
+   transform: translateY(-25px);
+
+  }
+  .inputbox input:focus,
+  .inputbox input:valid
+  {
+    border-bottom: 2px solid var(--clr);
+  }
+  .inputbox input[type="submit"]
+  {
+    background: var(--clr);
+    border: none;
+    padding: 15px;
+    border-radius: 50px;
+    color:#1c2630;
+    text-transform: none;
+    letter-spacing: 0.1em;
+    cursor: pointer;
+    transition: 0.5s;
+  }
+  .inputbox input[type="submit"]:hover
+  {
+    letter-spacing: 0.35em;
+  }
+  form{
+    padding-top: 30%;
+  }
+  form p{
+    color: #fff;
+    text-transform: none;
+  }
+  form p a
+  {
+    color: var(--clr);
+    font-weight: 500;
+    text-decoration: none;
+  }
+
+
+  
+</style>
+<body>
+        <!--navbar-->
+<header id="full_nav">
+    <div class="header">
+        <div class="container">
+            <nav class="navbar navbar-expand-sm fixed-top">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="#">
+                        <img class="logo" src="{{ url_for('static',filename='logo.webp' ) }}" style="width:7%" />
+                        <span class="navbar-text"><i class="i">software</i><b class="b">Maargh</b></span>
+                    </a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapsibleNavbar">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a class="nav-link" href="/home"><i class="fa-solid fa-house"></i>Home</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="/about"><i class="fa-solid fa-address-card"></i>About Us</a>
+                            </li>
+
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"><i class="fa-solid fa-registered"></i>Register</a>
+                                <ul class="dropdown-menu">
+                                  <li><a class="dropdown-item" href="#">Register Guide profile</a></li>
+                                  <li><a class="dropdown-item" href="/reg">Student Register</a></li>
+                                </ul>
+                              </li>
+                              
+                            
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" role="button"
+                                    data-bs-toggle="dropdown">More Options</a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="/guidelogin">Login</a></li>
+                                    <li><a class="dropdown-item" href="#">Guider profile</a></li>
+                                    <li><a class="dropdown-item" href="#">contact info</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        
+    <!--register form-->
+<form action="" method="post" class="mt-2 border p-5 bg-lighht shadow">
+    <div class="container">
+        <div class="row py-5 mt-4 align-items-center">
+                <!-- For Demo Purpose -->
+                <div class="col-md-5 pr-lg-5 mb-5 mb-md-0">
+                    <img src="https://bootstrapious.com/i/snippets/sn-registeration/illustration.svg" alt="" class="img-fluid mb-3 d-none d-md-block">
+                    <h1>Create a  professional profile for yourself</h1>
+                    <p class="font-italic text-muted mb-0">Create a account as registeration page</p>
+                    <ul class="rules_reg">
+                        <li>Register here for login purpose</li>
+                        <li>Make sure all the information given are accurate</li>
+                    </ul>
+                </div>
+        
+                <div class="col-md-7 col-lg-6 ml-auto">
+                    <h3>Form Validation</h3>
+                    <p>Try to submit all the fields.</p>
+                      
+                    <form action="/action_page.php" class="was-validated">
+                      <div class="input-group col-lg-6 mb-4">
+                        <input type="text" class="form-control" id="uname" placeholder="Enter username" name="uname" required>
+                        <div class="valid-feedback">Valid.</div>
+                        <div class="invalid-feedback">Please fill out this field.</div>
+                      </div>
+
+                      <div class="input-group col-lg-6 mb-4">
+                        <input type="text" class="form-control" id="emailid" placeholder="Enter email-id" name="emailid" required>
+                        <div class="valid-feedback">Valid.</div>
+                        <div class="invalid-feedback">Please fill out this field.</div>
+                      </div>
+
+
+                      <div class="input-group col-lg-6 mb-4">
+                        <input type="text" class="form-control" id="age" placeholder="Enter Your Age" name="age" required>
+                        <div class="valid-feedback">Valid.</div>
+                        <div class="invalid-feedback">Please fill out this field.</div>
+                      </div>
+                      
+                      <div class="input-group col-lg-12 mb-4">
+                        <select id="state" name="state" class="form-control custom-select bg-white border-left-0 border-md">
+                          <option value=""> Click to choose your State</option>
+                          <option value="">Andhra Pradesh</option>
+                          <option value="">Arunachal Pradesh</option>
+                          <option value="">Assam	</option>
+                          <option value="">Bihar</option>
+                          <option value="">Chhattisgarh</option>
+                          <option value="">Goa</option>
+                          <option value="">Gujarat</option>
+                          <option value="">Haryana</option>
+                          <option value="">Himachal Pradesh</option>
+                          <option value="">Jharkhand</option>
+                          <option value="">Karnataka</option>
+                          <option value="">Kerala</option>
+                          <option value="">Madhya Pradesh</option>
+                          <option value="">Maharashtra	</option>
+                          <option value="">Manipur</option>
+                          <option value="">Meghalaya</option>
+                          <option value="">Mizoram</option>
+                          <option value="">Nagaland</option>
+                          <option value="">Odisha</option>
+                          <option value="">Punjab</option>
+                          <option value="">Rajasthan</option>
+                          <option value="">Sikkim</option>
+                          <option value="">Tamil Nadu	</option>
+                          <option value="">Telangana</option>
+                          <option value="">Tripura</option>
+                          <option value="">Uttar Pradesh</option>
+                          <option value="">Uttarakhand</option>
+                          <option value="">West Bengal</option>
+                        </select>
+                    </div>
+                
+                      <div class="input-group col-lg-6 mb-4">
+                        <input type="text" class="form-control" id="phone" placeholder="Enter your phone number" name="phone" required>
+                        <div class="valid-feedback">Valid.</div>
+                        <div class="invalid-feedback">Please fill out this field.</div>
+                      </div>
+                     
+
+                      
+                      <div class="input-group col-lg-6 mb-4">
+                        <input type="text" class="form-control" id="qual" placeholder="Qualifications" name="qual" required>
+                        <div class="valid-feedback">Valid.</div>
+                        <div class="invalid-feedback">Please fill out this field.</div>
+                      </div>
+
+                      <div class="input-group col-lg-6 mb-4">
+                        <input type="text" class="form-control" id="spl" placeholder="Specialization(in particular subject)" name="spl" required>
+                        <div class="valid-feedback">Valid.</div>
+                        <div class="invalid-feedback">Please fill out this field.</div>
+                      </div>
+
+                      <div class="input-group col-lg-6 mb-4">
+                        <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pswd" required>
+                        <div class="valid-feedback">Valid.</div>
+                        <div class="invalid-feedback">Please fill out this field.</div>
+                      </div>
+
+                      <div data-role="main" class="ui-content col-lg-6 mb-1">
+                        <form method="post" action="/action_page_post.php">
+                          <fieldset data-role="controlgroup">
+                          <h5>Choose your gender:</h5>
+                            <label for="male">Male</label>
+                            <input type="radio" name="gender" id="male" value="male" checked>
+                            <label for="female">Female</label>
+                            <input type="radio" name="gender" id="female" value="female">
+                          </fieldset>
+                        </form></div> <br>
+                        
+                         
+        </div>
+         
+                           
+                    <center><a href="#" class="btn btn-secondary">Register</a></center>
+                   
+                   
+                            <!-- Divider Text -->
+                            <div class="form-group col-lg-12 mx-auto d-flex align-items-center my-4">
+                                <div class="border-bottom w-100 ml-5"></div>
+                                <span class="px-2 small text-muted font-weight-bold text-muted">OR</span>
+                                <div class="border-bottom w-100 mr-5"></div>
+                            </div>
+        
+            
+                            <!-- Already Registered -->
+                            <div class="text-center w-100">
+                                <p class="text-muted font-weight-bold">Already Registered? <a href="/guidelogin" class="text-primary ml-2">Login</a></p>
+                            </div>  
+                                 
+    </div>
+  </div>
+</form>
+
+
+
+
+
+
+
+<!--navbar script-->
+    <script>
+        const navE1 = document.querySelector('.navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY >= 56) {
+                navE1.classList.add('navbar-scrolled');
+
+            } else if (window.screenY < 56) {
+                navE1.classList.remove('navbar-scrolled')
+            }
+        })
+
+    </script>
+
+
+<!--register form side icons-->
+<script>
+$(function () {
+    $('input, select').on('focus', function () {
+        $(this).parent().find('.input-group-text').css('border-color', '#80bdff');
+    });
+    $('input, select').on('blur', function () {
+        $(this).parent().find('.input-group-text').css('border-color', '#ced4da');
+    });
+});
+
+</script>
+    
+<!--form script-->
+    <script>
+     let label = document.querySelectorAll('label').forEach(label =>{
+      label.innerHTML = label.innerHTML.split('').map((letters,i) => `<span style="transition-delay:${i * 50}ms">${letters}</span>`).join('');
+     });
+    </script>
+
+
+
+   
+</body>
+</html>      
+     
+    
+  
+            
+    
